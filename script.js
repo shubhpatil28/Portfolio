@@ -1,4 +1,4 @@
-const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+﻿const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 const prefersReducedMotion = reduceMotionQuery.matches;
 
 const loadingScreen = document.querySelector('.loading-screen');
@@ -42,9 +42,9 @@ window.addEventListener('scroll', () => {
 });
 
 hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
+  const isOpen = hamburger.classList.toggle('active');
   navLinks.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active'));
+  hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 
 document.querySelectorAll('.nav-links a').forEach((link) => {
@@ -53,6 +53,31 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
     navLinks.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
   });
+});
+
+// Close mobile menu on Escape key or outside click
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && navLinks.classList.contains('open')) {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
+
+document.addEventListener('click', (event) => {
+  if (navLinks.classList.contains('open') && !navbar.contains(event.target)) {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 760 && navLinks.classList.contains('open')) {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
 });
 
 const sectionObserver = new IntersectionObserver((entries) => {
@@ -104,10 +129,10 @@ if (!prefersReducedMotion && window.VanillaTilt) {
 
 if (window.Typed && document.querySelector('.typing-text')) {
   new Typed('.typing-text', {
-    strings: ['Full Stack Developer', 'Frontend Engineer', 'AI Developer', 'UI Designer', 'Problem Solver'],
-    typeSpeed: 70,
-    backSpeed: 45,
-    backDelay: 1100,
+    strings: ['Full Stack Developer', 'Next.js & React Engineer', 'AI Automation Builder', 'BCA Student & Problem Solver'],
+    typeSpeed: 65,
+    backSpeed: 40,
+    backDelay: 1200,
     loop: true
   });
 }
@@ -120,7 +145,7 @@ if (window.gsap && window.ScrollTrigger) {
   gsap.from('.hero-actions .btn', { y: 20, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out', delay: 0.75 });
   gsap.from('.profile-card', { scale: 0.94, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.5 });
 
-  gsap.utils.toArray('.section-title, .section-subtitle, .glass-card, .skill-card, .project-card, .timeline-item').forEach((el) => {
+  gsap.utils.toArray('.section-title, .section-subtitle, .glass-card, .skill-card, .service-card, .project-card, .timeline-item').forEach((el) => {
     gsap.fromTo(el, { y: 28, opacity: 0 }, {
       y: 0,
       opacity: 1,
@@ -144,10 +169,37 @@ if (window.Lenis) {
 }
 
 if (contactForm) {
+  const formStatus = document.getElementById('form-status');
   contactForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    alert('Thank you for reaching out! Your message has been sent. (This is a demo)');
-    contactForm.reset();
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email-input');
+    const messageInput = document.getElementById('contact-message');
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const email = emailInput ? emailInput.value.trim() : '';
+    const message = messageInput ? messageInput.value.trim() : '';
+
+    if (!name || !email || !message) {
+      if (formStatus) {
+        formStatus.textContent = 'Please fill out all required fields.';
+        formStatus.className = 'form-status error';
+      }
+      return;
+    }
+
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n---\nSent via portfolio contact form`
+    );
+    const mailtoUrl = `mailto:shubhampatil282487@gmail.com?subject=${subject}&body=${body}`;
+
+    if (formStatus) {
+      formStatus.textContent = 'Opening your email client to send message to shubhampatil282487@gmail.com...';
+      formStatus.className = 'form-status info';
+    }
+
+    window.location.href = mailtoUrl;
   });
 }
 
@@ -161,4 +213,3 @@ window.addEventListener('load', () => {
     loadingScreen.classList.add('hidden');
   }, 1300);
 });
-

@@ -1,19 +1,43 @@
-Shubham Patil
-Full Stack Developer
+﻿Shubham Patil
+Full Stack Developer & BCA Student
 
 Contact: shubhampatil282487@gmail.com
-Location: India
+GitHub: https://github.com/shubhpatil28
+Portfolio: https://shubhfolioo.vercel.app/
+Location: Maharashtra, India
 
 Summary:
-Passionate developer focused on building practical web applications, polished user interfaces, and modern digital experiences.
+Dedicated Full Stack Developer and Computer Application (BCA) student experienced in building modern web applications, multi-tenant SaaS platforms, institutional portals, and AI automation tooling. Skilled in TypeScript, React, Next.js, Python, Firebase, and Tailwind CSS with a strong focus on clean architecture, responsive design, and performance.
 
-Skills:
-HTML, CSS, JavaScript, C++, Firebase, Git, GitHub, Responsive Design, AI-assisted development
+Technical Skills:
+- Frontend: HTML5, CSS3, JavaScript (ES6+), TypeScript, React, Next.js, Tailwind CSS
+- Backend & APIs: Python, FastAPI, Flask, Node.js, Express.js, C++
+- Database & Cloud: Firebase Authentication, Firestore, SQL, Vercel, Render
+- Tools & Workflows: Git, GitHub, RESTful APIs, AI-Assisted Development
 
-Projects:
-- Edu Attendance System
-- EduCatalog
-- Simple Game
+Featured Projects:
+1. EduCatalog SaaS
+   - Multi-tenant school management platform built with Next.js, TypeScript, and Firebase.
+   - Features role-based dashboards, student catalog, attendance logs, and institutional controls.
+   - Live: https://educatalog-saas.vercel.app/
+   - GitHub: https://github.com/shubhpatil28/educatalog-saas
+
+2. AIM 2.0 College Website
+   - Official institutional portal for Smt. S. M. Agrawal Institute of Management (Next.js, TypeScript, Tailwind).
+   - Features academic program directories (BCA, BBA, MMS), admissions inquiries, and circular downloads.
+   - Live: https://collage-website-rho.vercel.app/
+   - GitHub: https://github.com/shubhpatil28/collageWebsite
+
+3. LinkedIn AI Autopilot
+   - Autonomous AI-driven content generation and scheduling engine for LinkedIn.
+   - Built with Next.js, TypeScript, Tailwind CSS, and AI model workflows.
+   - Live: https://linked-in-ai-autopilot.vercel.app/
+   - GitHub: https://github.com/shubhpatil28/LinkedIn-AI-Autopilot
+
+4. EduTrack Attendance System
+   - Student attendance management application featuring real-time Firebase Firestore data persistence.
+   - Live: https://edutrack-attendance-d44f3.web.app/
 
 Education:
-Bachelor of Computer Application (Expected Graduation: 2028)
+Bachelor of Computer Application (BCA)
+Expected Graduation: 2028
