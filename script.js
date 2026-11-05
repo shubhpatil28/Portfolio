@@ -51,15 +51,25 @@ if (window.Lenis) {
   });
 
   // Lenis drives the native scroll position; GSAP ScrollTrigger reads from it.
-  if (window.gsap && window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.normalizeScrollOffset(true);
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-    gsap.ticker.lagSmoothing(0);
-  } else {
+  // Wrapped in try/catch so a missing/optional library can never block the
+  // rest of the script (and therefore can never trap the loading screen).
+  try {
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+  } catch (err) {
+    console.warn('ScrollTrigger/Lenis sync failed, falling back to native scroll:', err);
     function raf(time) {
-      lenis.raf(time);
+      if (lenis) lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
@@ -169,25 +179,28 @@ if (window.Typed && document.querySelector('.typing-text')) {
 }
 
 if (window.gsap && window.ScrollTrigger) {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.from('.hero-title', { y: 50, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.2 });
-  gsap.from('.hero-subtitle', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.35 });
-  gsap.from('.hero-description', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.5 });
-  gsap.from('.hero-actions .btn', { y: 20, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out', delay: 0.75 });
-  gsap.from('.profile-card', { scale: 0.94, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.5 });
+  try {
+    gsap.from('.hero-title', { y: 50, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.2 });
+    gsap.from('.hero-subtitle', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.35 });
+    gsap.from('.hero-description', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.5 });
+    gsap.from('.hero-actions .btn', { y: 20, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out', delay: 0.75 });
+    gsap.from('.profile-card', { scale: 0.94, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.5 });
 
-  gsap.utils.toArray('.section-title, .section-subtitle, .glass-card, .skill-card, .service-card, .project-card, .timeline-item').forEach((el) => {
-    gsap.fromTo(el, { y: 28, opacity: 0 }, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 86%'
-      }
+    gsap.utils.toArray('.section-title, .section-subtitle, .glass-card, .skill-card, .service-card, .project-card, .timeline-item').forEach((el) => {
+      gsap.fromTo(el, { y: 28, opacity: 0 }, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 86%'
+        }
+      });
     });
-  });
+  } catch (err) {
+    console.warn('GSAP animations failed (non-fatal):', err);
+  }
 }
 
 if (contactForm) {
@@ -252,20 +265,32 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   });
 });
 
-window.addEventListener('load', () => {
-  // Refresh ScrollTrigger after layout/images settle so triggers are accurate.
-  const refresh = () => {
-    if (window.gsap && window.ScrollTrigger) {
+// Hides the loading screen. Guaranteed to run even if every optional
+// animation library fails to load — a hard fallback timer backs it up.
+function hideLoadingScreen() {
+  if (!loadingScreen) return;
+  if (loadingScreen.classList.contains('hidden')) return;
+  loadingScreen.classList.add('hidden');
+}
+
+function safeRefresh() {
+  try {
+    if (window.gsap && window.ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
       ScrollTrigger.refresh();
     }
-  };
-  requestAnimationFrame(refresh);
-  setTimeout(refresh, 600);
-  setTimeout(refresh, 2000);
+  } catch (err) {
+    console.warn('ScrollTrigger.refresh failed (non-fatal):', err);
+  }
+}
 
-  setTimeout(() => {
-    loadingScreen.classList.add('hidden');
-    // Images may finish loading once the screen hides — refresh again.
-    requestAnimationFrame(refresh);
-  }, 1300);
+window.addEventListener('load', () => {
+  // Refresh ScrollTrigger after layout/images settle so triggers are accurate.
+  requestAnimationFrame(safeRefresh);
+  setTimeout(safeRefresh, 600);
+  setTimeout(safeRefresh, 2000);
+
+  setTimeout(hideLoadingScreen, 1300);
+
+  // Hard fallback: if anything above threw, the screen still disappears.
+  setTimeout(hideLoadingScreen, 4000);
 });
