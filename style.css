@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --bg-color: #04050a;
     --bg-soft: rgba(12, 16, 31, 0.72);
     --text-color: #f5f7ff;
@@ -18,7 +18,9 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    /* scroll-behavior removed: Lenis handles smooth scrolling and
+       html scroll-behavior conflicts with it on some browsers. */
+    overscroll-behavior: none;
 }
 
 body {
@@ -320,6 +322,7 @@ body.cursor-active .cursor-glow {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    scroll-margin-top: 96px;
 }
 
 .section-heading {
@@ -444,7 +447,7 @@ body.cursor-active .cursor-glow {
     background: rgba(255,255,255,0.06);
 }
 
-.btn.tertiary {
+.btn.tertiary { 
     background: linear-gradient(135deg, rgba(34,211,238,0.2), rgba(96,165,250,0.2));
 }
 
@@ -771,7 +774,7 @@ body.cursor-active .cursor-glow {
 }
 
 .project-features li::before {
-    content: 'â€¢';
+    content: '•';
     position: absolute;
     left: 0;
     color: var(--accent);
@@ -1022,7 +1025,8 @@ footer {
     }
 
     .section {
-        padding: 110px 5vw 70px;
+        padding: 110px 5vw 80px;
+        scroll-margin-top: 84px;
     }
 
     .hero-actions {
@@ -1133,7 +1137,7 @@ footer {
 }
 
 .service-bullets li::before {
-    content: 'â€º';
+    content: '›';
     position: absolute;
     left: 0;
     top: -1px;
@@ -1256,12 +1260,12 @@ footer {
         flex-direction: column;
         align-items: flex-start;
     }
-
+    
     .form-actions {
         flex-direction: column;
         width: 100%;
     }
-
+    
     .form-actions .btn {
         width: 100%;
     }

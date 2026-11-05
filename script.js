@@ -1,4 +1,4 @@
-﻿const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 const prefersReducedMotion = reduceMotionQuery.matches;
 
 const loadingScreen = document.querySelector('.loading-screen');
@@ -36,10 +36,41 @@ window.addEventListener('mousemove', (event) => {
   cursorGlow.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
 });
 
+let lenis = null;
+
+if (window.Lenis) {
+  lenis = new Lenis({
+    duration: 1.1,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    smoothTouch: true,
+    touchInertiaMultiplier: 1.6,
+    wheelMultiplier: 1,
+    touchMultiplier: 1.4,
+    syncTouch: true
+  });
+
+  // Lenis drives the native scroll position; GSAP ScrollTrigger reads from it.
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.normalizeScrollOffset(true);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  } else {
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }
+}
+
+// Navbar / back-to-top react to Lenis's scroll position (single passive listener).
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('shrink', window.scrollY > 24);
   backToTop.classList.toggle('visible', window.scrollY > 700);
-});
+}, { passive: true });
 
 hamburger.addEventListener('click', () => {
   const isOpen = hamburger.classList.toggle('active');
@@ -159,15 +190,6 @@ if (window.gsap && window.ScrollTrigger) {
   });
 }
 
-if (window.Lenis) {
-  const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-}
-
 if (contactForm) {
   const formStatus = document.getElementById('form-status');
   contactForm.addEventListener('submit', (event) => {
@@ -205,11 +227,45 @@ if (contactForm) {
 
 backToTop.addEventListener('click', (event) => {
   event.preventDefault();
-  window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  if (lenis) {
+    lenis.scrollTo(0, { immediate: prefersReducedMotion });
+  } else {
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  }
+});
+
+// Lenis-based smooth scrolling for in-page nav links (avoids conflict
+// with html { scroll-behavior: smooth }). Back-to-top is handled separately.
+document.querySelectorAll('.nav-links a').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const href = link.getAttribute('href') || '';
+    if (!href.startsWith('#')) return;
+    event.preventDefault();
+    const id = href.slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+    if (lenis) {
+      lenis.scrollTo(target, { offset: -88, immediate: prefersReducedMotion });
+    } else {
+      target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    }
+  });
 });
 
 window.addEventListener('load', () => {
+  // Refresh ScrollTrigger after layout/images settle so triggers are accurate.
+  const refresh = () => {
+    if (window.gsap && window.ScrollTrigger) {
+      ScrollTrigger.refresh();
+    }
+  };
+  requestAnimationFrame(refresh);
+  setTimeout(refresh, 600);
+  setTimeout(refresh, 2000);
+
   setTimeout(() => {
     loadingScreen.classList.add('hidden');
+    // Images may finish loading once the screen hides — refresh again.
+    requestAnimationFrame(refresh);
   }, 1300);
 });
