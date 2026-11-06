@@ -1,6 +1,11 @@
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 const prefersReducedMotion = reduceMotionQuery.matches;
 
+// Touch devices (phones/tablets) get native scrolling. Lenis's smoothTouch
+// inertia fights the browser's address-bar-driven viewport changes and makes
+// momentum feel sluggish, so it is desktop-only.
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
 const loadingScreen = document.querySelector('.loading-screen');
 const cursor = document.querySelector('.cursor');
 const cursorGlow = document.querySelector('.cursor-glow');
@@ -38,16 +43,16 @@ window.addEventListener('mousemove', (event) => {
 
 let lenis = null;
 
-if (window.Lenis) {
+if (!isTouchDevice && window.Lenis) {
   lenis = new Lenis({
     duration: 1.1,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true,
-    smoothTouch: true,
+    smoothTouch: false,
     touchInertiaMultiplier: 1.6,
     wheelMultiplier: 1,
     touchMultiplier: 1.4,
-    syncTouch: true
+    syncTouch: false
   });
 
   // Lenis drives the native scroll position; GSAP ScrollTrigger reads from it.
@@ -247,8 +252,12 @@ backToTop.addEventListener('click', (event) => {
   }
 });
 
-// Lenis-based smooth scrolling for in-page nav links (avoids conflict
-// with html { scroll-behavior: smooth }). Back-to-top is handled separately.
+// Touch devices get native smooth scrolling. Lenis handles desktop only, so
+// enabling scroll-behavior here would only affect the touch fallback path.
+if (isTouchDevice) {
+  document.documentElement.style.scrollBehavior = 'smooth';
+}
+
 document.querySelectorAll('.nav-links a').forEach((link) => {
   link.addEventListener('click', (event) => {
     const href = link.getAttribute('href') || '';
