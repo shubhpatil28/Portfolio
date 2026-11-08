@@ -210,36 +210,172 @@ if (window.gsap && window.ScrollTrigger) {
 
 if (contactForm) {
   const formStatus = document.getElementById('form-status');
-  contactForm.addEventListener('submit', (event) => {
+  const submitBtn = document.getElementById('submit-btn');
+  const btnText = submitBtn ? submitBtn.querySelector('.btn-text') : null;
+  const nameInput = document.getElementById('contact-name');
+  const emailInput = document.getElementById('contact-email-input');
+  const messageInput = document.getElementById('contact-message');
+  const hpInput = document.getElementById('contact-hp-company');
+
+  const nameError = document.getElementById('name-error');
+  const emailError = document.getElementById('email-error');
+  const messageError = document.getElementById('message-error');
+
+  let isSubmitting = false;
+
+  function clearErrors() {
+    [nameInput, emailInput, messageInput].forEach((input) => {
+      if (input) input.removeAttribute('aria-invalid');
+    });
+    [nameError, emailError, messageError].forEach((err) => {
+      if (err) {
+        err.textContent = '';
+        err.classList.remove('visible');
+      }
+    });
+  }
+
+  function setFieldError(input, errorEl, message) {
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.classList.add('visible');
+    }
+  }
+
+  function validateClientSide(name, email, message) {
+    clearErrors();
+    let isValid = true;
+
+    if (!name) {
+      setFieldError(nameInput, nameError, 'Please enter your name.');
+      isValid = false;
+    } else if (name.length < 2) {
+      setFieldError(nameInput, nameError, 'Name must be at least 2 characters.');
+      isValid = false;
+    } else if (name.length > 100) {
+      setFieldError(nameInput, nameError, 'Name cannot exceed 100 characters.');
+      isValid = false;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    if (!email) {
+      setFieldError(emailInput, emailError, 'Please enter your email address.');
+      isValid = false;
+    } else if (email.length > 254 || !emailRegex.test(email)) {
+      setFieldError(emailInput, emailError, 'Please enter a valid email address.');
+      isValid = false;
+    }
+
+    if (!message) {
+      setFieldError(messageInput, messageError, 'Please enter a message.');
+      isValid = false;
+    } else if (message.length < 10) {
+      setFieldError(messageInput, messageError, 'Message must be at least 10 characters.');
+      isValid = false;
+    } else if (message.length > 3000) {
+      setFieldError(messageInput, messageError, 'Message cannot exceed 3,000 characters.');
+      isValid = false;
+    }
+
+    return isValid;
+  }
+
+  // Clear field-specific error dynamically when user starts editing
+  [nameInput, emailInput, messageInput].forEach((input) => {
+    if (input) {
+      input.addEventListener('input', () => {
+        if (input.getAttribute('aria-invalid') === 'true') {
+          input.removeAttribute('aria-invalid');
+          const errId = input.getAttribute('aria-describedby');
+          const errEl = errId ? document.getElementById(errId) : null;
+          if (errEl) {
+            errEl.textContent = '';
+            errEl.classList.remove('visible');
+          }
+        }
+      });
+    }
+  });
+
+  contactForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const nameInput = document.getElementById('contact-name');
-    const emailInput = document.getElementById('contact-email-input');
-    const messageInput = document.getElementById('contact-message');
+
+    // Prevent duplicate rapid submissions
+    if (isSubmitting) return;
 
     const name = nameInput ? nameInput.value.trim() : '';
     const email = emailInput ? emailInput.value.trim() : '';
     const message = messageInput ? messageInput.value.trim() : '';
+    const _hp_company = hpInput ? hpInput.value.trim() : '';
 
-    if (!name || !email || !message) {
+    if (!validateClientSide(name, email, message)) {
       if (formStatus) {
-        formStatus.textContent = 'Please fill out all required fields.';
+        formStatus.textContent = 'Please fix the highlighted fields above.';
         formStatus.className = 'form-status error';
       }
       return;
     }
 
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n---\nSent via portfolio contact form`
-    );
-    const mailtoUrl = `mailto:shubhampatil282487@gmail.com?subject=${subject}&body=${body}`;
-
+    // Set loading state
+    isSubmitting = true;
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      if (btnText) {
+        btnText.innerHTML = '<span class="spinner" aria-hidden="true"></span> Sending...';
+      }
+    }
     if (formStatus) {
-      formStatus.textContent = 'Opening your email client to send message to shubhampatil282487@gmail.com...';
+      formStatus.textContent = 'Sending your message securely...';
       formStatus.className = 'form-status info';
     }
 
-    window.location.href = mailtoUrl;
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          _hp_company
+        })
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok && data.success) {
+        if (formStatus) {
+          formStatus.textContent = data.message || 'Thank you! Your message has been sent successfully.';
+          formStatus.className = 'form-status success';
+        }
+        contactForm.reset();
+        clearErrors();
+      } else {
+        const errorMsg = data.error || 'Failed to send message. Please try again or email directly.';
+        if (formStatus) {
+          formStatus.textContent = errorMsg;
+          formStatus.className = 'form-status error';
+        }
+      }
+    } catch (networkError) {
+      console.error('Contact form submission error:', networkError);
+      if (formStatus) {
+        formStatus.textContent = 'Network error. Please check your connection or reach out via email directly.';
+        formStatus.className = 'form-status error';
+      }
+    } finally {
+      isSubmitting = false;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        if (btnText) {
+          btnText.textContent = 'Send Message';
+        }
+      }
+    }
   });
 }
 

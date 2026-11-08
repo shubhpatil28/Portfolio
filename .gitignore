@@ -1,0 +1,13 @@
+node_modules
+.env
+.env.local
+.vercel
+*.json
+!package.json
+!package-lock.json
+firebase-service-account*.json
+service-account*.json
+serviceAccountKey*.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

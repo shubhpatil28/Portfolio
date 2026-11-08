@@ -7,7 +7,7 @@
     <meta name="author" content="Shubham Patil">
     <meta name="theme-color" content="#04050a">
     <title>Shubham Patil | Full Stack Developer & Software Engineer</title>
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shubhfolioo.vercel.app/">
@@ -500,28 +500,43 @@
                             <a href="resume.txt" download="Shubham-Patil-Resume.txt" aria-label="Download Resume" title="Resume"><i class="fa-solid fa-file-lines"></i></a>
                         </div>
                     </div>
-                    
-                    <form class="contact-form" id="contact-form" action="mailto:shubhampatil282487@gmail.com" method="POST" enctype="text/plain">
+
+                    <form class="contact-form" id="contact-form" novalidate>
                         <div class="form-instructions">
-                            <i class="fa-solid fa-circle-info"></i> Send a message directly via your email client or write below:
+                            <i class="fa-solid fa-circle-info"></i> Fill out the form below or send a message directly via email:
                         </div>
-                        <label class="field">
+
+                        <!-- Honeypot field for spam bot protection (hidden from humans) -->
+                        <div class="hp-field" aria-hidden="true">
+                            <label for="contact-hp-company">Do not fill this field</label>
+                            <input type="text" id="contact-hp-company" name="_hp_company" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <label class="field" for="contact-name">
                             <span>Your Name <span class="required">*</span></span>
-                            <input type="text" id="contact-name" name="name" placeholder="e.g. Alex Morgan" required autocomplete="name">
+                            <input type="text" id="contact-name" name="name" placeholder="e.g. Alex Morgan" required autocomplete="name" aria-describedby="name-error">
+                            <span class="field-error" id="name-error" aria-live="polite"></span>
                         </label>
-                        <label class="field">
+
+                        <label class="field" for="contact-email-input">
                             <span>Your Email <span class="required">*</span></span>
-                            <input type="email" id="contact-email-input" name="email" placeholder="e.g. alex@example.com" required autocomplete="email">
+                            <input type="email" id="contact-email-input" name="email" placeholder="e.g. alex@example.com" required autocomplete="email" aria-describedby="email-error">
+                            <span class="field-error" id="email-error" aria-live="polite"></span>
                         </label>
-                        <label class="field">
+
+                        <label class="field" for="contact-message">
                             <span>Your Message <span class="required">*</span></span>
-                            <textarea id="contact-message" name="message" rows="5" placeholder="Share project details or inquiry..." required></textarea>
+                            <textarea id="contact-message" name="message" rows="5" placeholder="Share project details or inquiry..." required aria-describedby="message-error"></textarea>
+                            <span class="field-error" id="message-error" aria-live="polite"></span>
                         </label>
+
                         <div class="form-actions">
-                            <button type="submit" class="btn magnetic primary"><span><i class="fa-solid fa-paper-plane"></i> Send via Email Client</span></button>
+                            <button type="submit" class="btn magnetic primary submit-btn" id="submit-btn">
+                                <span class="btn-content"><i class="fa-solid fa-paper-plane"></i> <span class="btn-text">Send Message</span></span>
+                            </button>
                             <a href="mailto:shubhampatil282487@gmail.com?subject=Portfolio%20Inquiry" class="btn secondary"><span><i class="fa-solid fa-envelope-open-text"></i> Open Mail App Directly</span></a>
                         </div>
-                        <p class="form-status" id="form-status" aria-live="polite"></p>
+                        <p class="form-status" id="form-status" aria-live="polite" role="status"></p>
                     </form>
                 </div>
             </div>

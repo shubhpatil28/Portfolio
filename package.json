@@ -1,0 +1,14 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio of Shubham Patil — Full Stack Developer & BCA Student",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "firebase-admin": "^14.5.0",
+    "resend": "^4.1.2"
+  }
+}
