@@ -1,4 +1,5 @@
-import admin from 'firebase-admin';
+import { initializeApp, cert, getApps } from 'firebase-admin/app';
+import { getFirestore, Timestamp } from 'firebase-admin/firestore';
 
 let dbInstance = null;
 let initAttempted = false;
@@ -72,15 +73,15 @@ export function getFirestoreDb() {
   }
 
   try {
-    const existingApps = admin.apps;
+    const existingApps = getApps();
     const app = existingApps.length > 0
       ? existingApps[0]
-      : admin.initializeApp({
-          credential: admin.credential.cert(credentials),
+      : initializeApp({
+          credential: cert(credentials),
           projectId: credentials.projectId || credentials.project_id || 'shubhfolio-backend'
         });
 
-    dbInstance = admin.firestore(app);
+    dbInstance = getFirestore(app);
     return dbInstance;
   } catch (error) {
     console.error('Failed to initialize Firebase Admin SDK:', error.message);
@@ -164,14 +165,14 @@ export async function executeFirestoreProtection({ db, ip, contentHash, now = Da
       count,
       windowStart,
       lastRequestTime: now,
-      expiresAt: admin.firestore.Timestamp.fromMillis(windowStart + RATE_LIMIT_WINDOW_MS)
+      expiresAt: Timestamp.fromMillis(windowStart + RATE_LIMIT_WINDOW_MS)
     });
 
     transaction.set(dedupRef, {
       contentHash,
       ip,
       timestamp: now,
-      expiresAt: admin.firestore.Timestamp.fromMillis(now + DEDUPLICATION_WINDOW_MS)
+      expiresAt: Timestamp.fromMillis(now + DEDUPLICATION_WINDOW_MS)
     });
 
     return {
