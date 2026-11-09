@@ -74,10 +74,10 @@
     <main>
         <section id="home" class="home section">
             <div class="home-container">
-                <div class="home-content reveal">
+                <div class="home-content">
                     <p class="eyebrow">Full Stack Developer • BCA Student • AI Enthusiast</p>
                     <h1 class="hero-title">Hi, I'm <span class="highlight">Shubham Patil</span></h1>
-                    <h2 class="hero-subtitle"><span class="typing-text"></span></h2>
+                    <h2 class="hero-subtitle"><span class="typing-text">Full Stack Developer</span></h2>
                     <p class="hero-description">I am a dedicated Computer Application (BCA) student and Full Stack Developer passionate about building robust, responsive web applications and modern AI-driven solutions. Experienced with Next.js, React, TypeScript, Python, and Firebase, I engineer real-world platforms including institutional systems, multi-tenant SaaS, and automation workflows.</p>
                     <div class="hero-actions">
                         <a href="#projects" class="btn magnetic primary"><span><i class="fa-solid fa-folder-open"></i> View Projects</span></a>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
 
-                <div class="home-image reveal">
+                <div class="home-image">
                     <div class="profile-card tilt-card">
                         <div class="orbit orbit-a"></div>
                         <div class="orbit orbit-b"></div>
@@ -111,45 +111,68 @@
 
             <div class="about-grid">
                 <div class="glass-card code-card reveal">
-                    <div class="card-label">Developer profile</div>
-                    <pre><code>const developer = {
-  name: "Shubham Patil",
-  role: "Full Stack Developer",
-  focus: ["Next.js", "TypeScript", "Python", "Cloud"],
-  education: "BCA (2025 - 2028)",
-  location: "India"
+                    <div class="code-header">
+                        <div class="window-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="window-title"><i class="fa-solid fa-code"></i> developer.ts</span>
+                        <span class="code-badge">TypeScript</span>
+                    </div>
+                    <pre><code><span class="token-keyword">const</span> <span class="token-variable">developer</span> = {
+  <span class="token-prop">name</span>: <span class="token-string">"Shubham Patil"</span>,
+  <span class="token-prop">role</span>: <span class="token-string">"Full Stack Developer"</span>,
+  <span class="token-prop">focus</span>: [<span class="token-string">"Next.js"</span>, <span class="token-string">"TypeScript"</span>, <span class="token-string">"Python"</span>, <span class="token-string">"Cloud"</span>],
+  <span class="token-prop">education</span>: <span class="token-string">"BCA (2025 - 2028)"</span>,
+  <span class="token-prop">location</span>: <span class="token-string">"India"</span>,
+  <span class="token-prop">status</span>: <span class="token-string">"Building &amp; Shipping"</span>
 };</code></pre>
                 </div>
 
                 <div class="about-stack reveal">
                     <div class="glass-card stat-card">
                         <div class="icon-wrap"><i class="fa-solid fa-rocket"></i></div>
-                        <h3>Projects</h3>
-                        <p>4 deployed builds with clean architecture, auth, and responsive UI.</p>
+                        <div>
+                            <h3>Projects</h3>
+                            <p>4 deployed builds with clean architecture, auth, and responsive UI.</p>
+                        </div>
                     </div>
                     <div class="glass-card stat-card">
                         <div class="icon-wrap"><i class="fa-solid fa-layer-group"></i></div>
-                        <h3>Core Stack</h3>
-                        <p>Next.js, React, TypeScript, Python, Firebase, Firestore, and Tailwind CSS.</p>
+                        <div>
+                            <h3>Core Stack</h3>
+                            <p>Next.js, React, TypeScript, Python, Firebase, Firestore, and Tailwind CSS.</p>
+                        </div>
                     </div>
                     <div class="glass-card stat-card">
                         <div class="icon-wrap"><i class="fa-solid fa-clock"></i></div>
-                        <h3>Hands-on Practice</h3>
-                        <p>Practical full stack development, institutional platforms, and SaaS.</p>
+                        <div>
+                            <h3>Hands-on Practice</h3>
+                            <p>Practical full stack development, institutional platforms, and SaaS.</p>
+                        </div>
                     </div>
                     <div class="glass-card stat-card">
                         <div class="icon-wrap"><i class="fa-brands fa-github"></i></div>
-                        <h3>GitHub Activity</h3>
-                        <p>20+ repositories, consistent commit logs, and rapid prototype delivery.</p>
+                        <div>
+                            <h3>GitHub Activity</h3>
+                            <p>20+ repositories, consistent commit logs, and rapid prototype delivery.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="education reveal">
                 <div class="glass-card education-card">
-                    <h3>Education</h3>
-                    <h4>Bachelor of Computer Application</h4>
-                    <p>Expected Graduation: 2028</p>
+                    <div class="education-header">
+                        <div class="education-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="education-title-group">
+                            <span class="education-badge">Academic Journey</span>
+                            <h3>Bachelor of Computer Application (BCA)</h3>
+                            <p class="education-meta"><i class="fa-solid fa-calendar-check"></i> 2025 - 2028 • Expected Graduation: 2028</p>
+                        </div>
+                    </div>
+                    <p class="education-desc">Strengthening computer science fundamentals in software engineering, object-oriented programming (C++), algorithmic problem solving, relational and NoSQL databases, and full-stack cloud architecture.</p>
                 </div>
             </div>
         </section>
@@ -163,105 +186,169 @@
 
             <div class="skills-container">
                 <div class="skill-category reveal">
-                    <h3 class="category-title"><i class="fa-solid fa-desktop"></i> Frontend Engineering</h3>
+                    <div class="category-header">
+                        <div class="category-icon-badge"><i class="fa-solid fa-desktop"></i></div>
+                        <h3 class="category-title">Frontend Engineering</h3>
+                        <span class="category-count">4 Technologies</span>
+                    </div>
                     <div class="skills-grid">
-                        <article class="skill-card tilt-card" data-tooltip="Component architecture, hooks, and full-stack App Router">
-                            <i class="fa-brands fa-react skill-icon"></i>
-                            <h3>React & Next.js</h3>
-                            <div class="progress-bar"><span style="width: 88%"></span></div>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Component architecture, custom hooks, App Router, SSR &amp; SSG" aria-label="React &amp; Next.js: Component architecture, custom hooks, App Router, SSR &amp; SSG">
+                            <div class="skill-card-top">
+                                <i class="fa-brands fa-react skill-icon"></i>
+                                <span class="skill-badge core">Core</span>
+                            </div>
+                            <h3>React &amp; Next.js</h3>
+                            <span class="skill-tag">App Router &amp; SSR</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="Strong typing, interfaces, and modern ES6+ paradigms">
-                            <i class="fa-brands fa-js skill-icon"></i>
-                            <h3>TypeScript & JS</h3>
-                            <div class="progress-bar"><span style="width: 85%"></span></div>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Strong typing, strict contracts, interfaces, and modern ES6+ paradigms" aria-label="TypeScript &amp; JS: Strong typing, strict contracts, interfaces, and modern ES6+ paradigms">
+                            <div class="skill-card-top">
+                                <i class="fa-brands fa-js skill-icon"></i>
+                                <span class="skill-badge core">Core</span>
+                            </div>
+                            <h3>TypeScript &amp; JS</h3>
+                            <span class="skill-tag">Type Safety &amp; ES6+</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="Utility-first styling, flexbox/grid layouts, animations">
-                            <i class="fa-solid fa-wind skill-icon"></i>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Utility-first styling, flexbox/grid layouts, animations, and dark theme" aria-label="Tailwind CSS: Utility-first styling, flexbox/grid layouts, animations, and dark theme">
+                            <div class="skill-card-top">
+                                <i class="fa-solid fa-wind skill-icon"></i>
+                                <span class="skill-badge">Styling</span>
+                            </div>
                             <h3>Tailwind CSS</h3>
-                            <div class="progress-bar"><span style="width: 90%"></span></div>
+                            <span class="skill-tag">Modern UI Systems</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="Semantic, accessible markup and responsive standards">
-                            <i class="fa-brands fa-html5 skill-icon"></i>
-                            <h3>HTML5 & CSS3</h3>
-                            <div class="progress-bar"><span style="width: 92%"></span></div>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Semantic, accessible markup, modern layout models, and responsive standards" aria-label="HTML5 &amp; CSS3: Semantic, accessible markup, modern layout models, and responsive standards">
+                            <div class="skill-card-top">
+                                <i class="fa-brands fa-html5 skill-icon"></i>
+                                <span class="skill-badge">Standards</span>
+                            </div>
+                            <h3>HTML5 &amp; CSS3</h3>
+                            <span class="skill-tag">Semantic &amp; A11y</span>
                         </article>
                     </div>
                 </div>
 
                 <div class="skill-category reveal">
-                    <h3 class="category-title"><i class="fa-solid fa-server"></i> Backend & APIs</h3>
+                    <div class="category-header">
+                        <div class="category-icon-badge"><i class="fa-solid fa-server"></i></div>
+                        <h3 class="category-title">Backend &amp; APIs</h3>
+                        <span class="category-count">4 Technologies</span>
+                    </div>
                     <div class="skills-grid">
-                        <article class="skill-card tilt-card" data-tooltip="Backend scripting, automation, data handling, and AI integrations">
-                            <i class="fa-brands fa-python skill-icon"></i>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Backend scripting, automation pipelines, data handling, and AI integrations" aria-label="Python: Backend scripting, automation pipelines, data handling, and AI integrations">
+                            <div class="skill-card-top">
+                                <i class="fa-brands fa-python skill-icon"></i>
+                                <span class="skill-badge core">Core</span>
+                            </div>
                             <h3>Python</h3>
-                            <div class="progress-bar"><span style="width: 84%"></span></div>
+                            <span class="skill-tag">Automation &amp; Scripting</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="High-performance async APIs with automatic OpenAPI docs">
-                            <i class="fa-solid fa-bolt skill-icon"></i>
-                            <h3>FastAPI & Flask</h3>
-                            <div class="progress-bar"><span style="width: 80%"></span></div>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="High-performance async APIs with automatic OpenAPI schema validation" aria-label="FastAPI &amp; Flask: High-performance async APIs with automatic OpenAPI schema validation">
+                            <div class="skill-card-top">
+                                <i class="fa-solid fa-bolt skill-icon"></i>
+                                <span class="skill-badge">Framework</span>
+                            </div>
+                            <h3>FastAPI &amp; Flask</h3>
+                            <span class="skill-tag">REST &amp; Async APIs</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="Event-driven server runtimes, middleware, and microservices">
-                            <i class="fa-brands fa-node-js skill-icon"></i>
-                            <h3>Node.js & Express</h3>
-                            <div class="progress-bar"><span style="width: 82%"></span></div>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Event-driven server runtimes, REST endpoints, and security middleware" aria-label="Node.js &amp; Express: Event-driven server runtimes, REST endpoints, and security middleware">
+                            <div class="skill-card-top">
+                                <i class="fa-brands fa-node-js skill-icon"></i>
+                                <span class="skill-badge">Runtime</span>
+                            </div>
+                            <h3>Node.js &amp; Express</h3>
+                            <span class="skill-tag">Server Runtimes</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="Object-oriented programming, data structures, and core logic">
-                            <i class="fa-solid fa-code skill-icon"></i>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Object-oriented programming, data structures, and algorithmic core logic" aria-label="C++: Object-oriented programming, data structures, and algorithmic core logic">
+                            <div class="skill-card-top">
+                                <i class="fa-solid fa-code skill-icon"></i>
+                                <span class="skill-badge">Languages</span>
+                            </div>
                             <h3>C++</h3>
-                            <div class="progress-bar"><span style="width: 85%"></span></div>
+                            <span class="skill-tag">OOP &amp; Data Structures</span>
                         </article>
                     </div>
                 </div>
 
                 <div class="skill-category reveal">
-                    <h3 class="category-title"><i class="fa-solid fa-database"></i> Database & Cloud Platform</h3>
+                    <div class="category-header">
+                        <div class="category-icon-badge"><i class="fa-solid fa-database"></i></div>
+                        <h3 class="category-title">Database &amp; Cloud Platform</h3>
+                        <span class="category-count">4 Technologies</span>
+                    </div>
                     <div class="skills-grid">
-                        <article class="skill-card tilt-card" data-tooltip="Authentication, Cloud Functions, and Firebase Hosting">
-                            <i class="fa-solid fa-fire skill-icon"></i>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Authentication, Cloud Functions, rules, and serverless hosting" aria-label="Firebase: Authentication, Cloud Functions, rules, and serverless hosting">
+                            <div class="skill-card-top">
+                                <i class="fa-solid fa-fire skill-icon"></i>
+                                <span class="skill-badge core">Core</span>
+                            </div>
                             <h3>Firebase</h3>
-                            <div class="progress-bar"><span style="width: 88%"></span></div>
+                            <span class="skill-tag">Auth &amp; Cloud Functions</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="Real-time document stores, collections, rules, and indexing">
-                            <i class="fa-solid fa-cloud-arrow-down skill-icon"></i>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Real-time document stores, atomic transactions, security rules, and indexing" aria-label="Firestore: Real-time document stores, atomic transactions, security rules, and indexing">
+                            <div class="skill-card-top">
+                                <i class="fa-solid fa-cloud-arrow-down skill-icon"></i>
+                                <span class="skill-badge">Database</span>
+                            </div>
                             <h3>Firestore</h3>
-                            <div class="progress-bar"><span style="width: 86%"></span></div>
+                            <span class="skill-tag">NoSQL &amp; Real-time Sync</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="Relational schema design, queries, joins, and data integrity">
-                            <i class="fa-solid fa-database skill-icon"></i>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Relational schema design, normalization, queries, joins, and data integrity" aria-label="SQL: Relational schema design, normalization, queries, joins, and data integrity">
+                            <div class="skill-card-top">
+                                <i class="fa-solid fa-database skill-icon"></i>
+                                <span class="skill-badge">Database</span>
+                            </div>
                             <h3>SQL</h3>
-                            <div class="progress-bar"><span style="width: 80%"></span></div>
+                            <span class="skill-tag">Relational Schemas</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="Edge deployments, CI/CD pipelines, and cloud hosting">
-                            <i class="fa-solid fa-cloud skill-icon"></i>
-                            <h3>Vercel & Render</h3>
-                            <div class="progress-bar"><span style="width: 88%"></span></div>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Edge deployments, CI/CD pipelines, preview environments, and production monitoring" aria-label="Vercel &amp; Render: Edge deployments, CI/CD pipelines, preview environments, and production monitoring">
+                            <div class="skill-card-top">
+                                <i class="fa-solid fa-cloud skill-icon"></i>
+                                <span class="skill-badge">DevOps</span>
+                            </div>
+                            <h3>Vercel &amp; Render</h3>
+                            <span class="skill-tag">Edge &amp; Cloud Hosting</span>
                         </article>
                     </div>
                 </div>
 
                 <div class="skill-category reveal">
-                    <h3 class="category-title"><i class="fa-solid fa-screwdriver-wrench"></i> Workflow & Tools</h3>
+                    <div class="category-header">
+                        <div class="category-icon-badge"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <h3 class="category-title">Workflow &amp; Tools</h3>
+                        <span class="category-count">4 Technologies</span>
+                    </div>
                     <div class="skills-grid">
-                        <article class="skill-card tilt-card" data-tooltip="Branching workflows, commits, pull requests, and merges">
-                            <i class="fa-brands fa-git-alt skill-icon"></i>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Branching workflows, atomic commits, pull requests, rebase, and merges" aria-label="Git: Branching workflows, atomic commits, pull requests, rebase, and merges">
+                            <div class="skill-card-top">
+                                <i class="fa-brands fa-git-alt skill-icon"></i>
+                                <span class="skill-badge core">Core</span>
+                            </div>
                             <h3>Git</h3>
-                            <div class="progress-bar"><span style="width: 86%"></span></div>
+                            <span class="skill-tag">Version Control</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="Repository management, open-source collaboration, issues">
-                            <i class="fa-brands fa-github skill-icon"></i>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Repository management, open-source collaboration, issues, and code review" aria-label="GitHub: Repository management, open-source collaboration, issues, and code review">
+                            <div class="skill-card-top">
+                                <i class="fa-brands fa-github skill-icon"></i>
+                                <span class="skill-badge">Platform</span>
+                            </div>
                             <h3>GitHub</h3>
-                            <div class="progress-bar"><span style="width: 88%"></span></div>
+                            <span class="skill-tag">CI/CD &amp; Repositories</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="Leveraging LLMs and coding assistants for productivity">
-                            <i class="fa-solid fa-wand-magic-sparkles skill-icon"></i>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Leveraging LLMs and coding agents for architecture prototyping and test coverage" aria-label="AI-Assisted Dev: Leveraging LLMs and coding agents for architecture prototyping and test coverage">
+                            <div class="skill-card-top">
+                                <i class="fa-solid fa-wand-magic-sparkles skill-icon"></i>
+                                <span class="skill-badge">Productivity</span>
+                            </div>
                             <h3>AI-Assisted Dev</h3>
-                            <div class="progress-bar"><span style="width: 90%"></span></div>
+                            <span class="skill-tag">Agentic Workflows</span>
                         </article>
-                        <article class="skill-card tilt-card" data-tooltip="Algorithmic problem solving and debugging complex flows">
-                            <i class="fa-solid fa-puzzle-piece skill-icon"></i>
+                        <article class="skill-card tilt-card" tabindex="0" data-tooltip="Algorithmic problem solving, edge case analysis, and debugging complex flows" aria-label="Problem Solving: Algorithmic problem solving, edge case analysis, and debugging complex flows">
+                            <div class="skill-card-top">
+                                <i class="fa-solid fa-puzzle-piece skill-icon"></i>
+                                <span class="skill-badge">Methodology</span>
+                            </div>
                             <h3>Problem Solving</h3>
-                            <div class="progress-bar"><span style="width: 88%"></span></div>
+                            <span class="skill-tag">Systematic Debugging</span>
                         </article>
                     </div>
                 </div>
@@ -335,8 +422,8 @@
                         <img src="assets/preview-educatalog.svg" alt="EduCatalog SaaS architecture and dashboard visual" loading="lazy">
                         <div class="project-overlay">
                             <div class="overlay-buttons">
-                                <a href="https://educatalog-saas.vercel.app/" target="_blank" rel="noreferrer" class="btn small"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
-                                <a href="https://github.com/shubhpatil28/educatalog-saas" target="_blank" rel="noreferrer" class="btn small outline"><span><i class="fa-brands fa-github"></i> GitHub Source</span></a>
+                                <a href="https://educatalog-saas.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn small primary"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
+                                <a href="https://github.com/shubhpatil28/educatalog-saas" target="_blank" rel="noopener noreferrer" class="btn small secondary"><span><i class="fa-brands fa-github"></i> GitHub Source</span></a>
                             </div>
                         </div>
                     </div>
@@ -354,6 +441,10 @@
                             <li>Real-time student cataloging, attendance logs, and staff management.</li>
                             <li>Institutional analytics reporting and subscription-ready tenant controls.</li>
                         </ul>
+                        <div class="project-actions">
+                            <a href="https://educatalog-saas.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn small primary"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
+                            <a href="https://github.com/shubhpatil28/educatalog-saas" target="_blank" rel="noopener noreferrer" class="btn small secondary"><span><i class="fa-brands fa-github"></i> Code</span></a>
+                        </div>
                     </div>
                 </article>
 
@@ -362,8 +453,8 @@
                         <img src="assets/preview-aim.svg" alt="AIM 2.0 College Website visual preview" loading="lazy">
                         <div class="project-overlay">
                             <div class="overlay-buttons">
-                                <a href="https://collage-website-rho.vercel.app/" target="_blank" rel="noreferrer" class="btn small"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
-                                <a href="https://github.com/shubhpatil28/collageWebsite" target="_blank" rel="noreferrer" class="btn small outline"><span><i class="fa-brands fa-github"></i> GitHub Source</span></a>
+                                <a href="https://collage-website-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn small primary"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
+                                <a href="https://github.com/shubhpatil28/collageWebsite" target="_blank" rel="noopener noreferrer" class="btn small secondary"><span><i class="fa-brands fa-github"></i> GitHub Source</span></a>
                             </div>
                         </div>
                     </div>
@@ -381,6 +472,10 @@
                             <li>Comprehensive program directories (BCA, BBA, MMS) with syllabus downloads.</li>
                             <li>Admissions inquiry pipeline, exam notices, and faculty directories.</li>
                         </ul>
+                        <div class="project-actions">
+                            <a href="https://collage-website-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn small primary"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
+                            <a href="https://github.com/shubhpatil28/collageWebsite" target="_blank" rel="noopener noreferrer" class="btn small secondary"><span><i class="fa-brands fa-github"></i> Code</span></a>
+                        </div>
                     </div>
                 </article>
 
@@ -389,8 +484,8 @@
                         <img src="assets/preview-linkedin-ai.svg" alt="LinkedIn AI Autopilot automation platform visual" loading="lazy">
                         <div class="project-overlay">
                             <div class="overlay-buttons">
-                                <a href="https://linked-in-ai-autopilot.vercel.app/" target="_blank" rel="noreferrer" class="btn small"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
-                                <a href="https://github.com/shubhpatil28/LinkedIn-AI-Autopilot" target="_blank" rel="noreferrer" class="btn small outline"><span><i class="fa-brands fa-github"></i> GitHub Source</span></a>
+                                <a href="https://linked-in-ai-autopilot.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn small primary"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
+                                <a href="https://github.com/shubhpatil28/LinkedIn-AI-Autopilot" target="_blank" rel="noopener noreferrer" class="btn small secondary"><span><i class="fa-brands fa-github"></i> GitHub Source</span></a>
                             </div>
                         </div>
                     </div>
@@ -408,6 +503,10 @@
                             <li>Prompt engineering pipelines for high-engagement professional posts.</li>
                             <li>Modern interactive UI with draft review and scheduling features.</li>
                         </ul>
+                        <div class="project-actions">
+                            <a href="https://linked-in-ai-autopilot.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn small primary"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
+                            <a href="https://github.com/shubhpatil28/LinkedIn-AI-Autopilot" target="_blank" rel="noopener noreferrer" class="btn small secondary"><span><i class="fa-brands fa-github"></i> Code</span></a>
+                        </div>
                     </div>
                 </article>
 
@@ -416,7 +515,7 @@
                         <img src="assets/preview-edutrack.svg" alt="EduTrack Attendance System dashboard visual" loading="lazy">
                         <div class="project-overlay">
                             <div class="overlay-buttons">
-                                <a href="https://edutrack-attendance-d44f3.web.app/" target="_blank" rel="noreferrer" class="btn small"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
+                                <a href="https://edutrack-attendance-d44f3.web.app/" target="_blank" rel="noopener noreferrer" class="btn small primary"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
                             </div>
                         </div>
                     </div>
@@ -434,6 +533,9 @@
                             <li>Real-time synchronization and status updates backed by Firestore.</li>
                             <li>Secure authenticated portal for instructors and administrative record keeping.</li>
                         </ul>
+                        <div class="project-actions">
+                            <a href="https://edutrack-attendance-d44f3.web.app/" target="_blank" rel="noopener noreferrer" class="btn small primary"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</span></a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -490,14 +592,21 @@
             <div class="contact-shell reveal">
                 <div class="glass-card contact-card">
                     <div class="contact-header-info">
-                        <p class="contact-email">
-                            <i class="fa-solid fa-envelope"></i> Reach me directly at:
-                            <a href="mailto:shubhampatil282487@gmail.com">shubhampatil282487@gmail.com</a>
-                        </p>
+                        <div class="contact-email-box">
+                            <div class="contact-email-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="contact-email-text">
+                                <span class="contact-email-label">Direct Inquiries</span>
+                                <a href="mailto:shubhampatil282487@gmail.com" class="contact-email-link" id="contact-email-link">shubhampatil282487@gmail.com</a>
+                            </div>
+                            <button type="button" class="copy-email-btn" id="copy-email-btn" aria-label="Copy email address" title="Copy to clipboard">
+                                <i class="fa-regular fa-copy"></i>
+                                <span class="copy-tooltip">Copy</span>
+                            </button>
+                        </div>
                         <div class="social-links" aria-label="Social and professional links">
-                            <a href="https://github.com/shubhpatil28" target="_blank" rel="noreferrer" aria-label="GitHub Profile" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                            <a href="mailto:shubhampatil282487@gmail.com" aria-label="Send Email" title="Send Email"><i class="fa-solid fa-envelope"></i></a>
-                            <a href="resume.txt" download="Shubham-Patil-Resume.txt" aria-label="Download Resume" title="Resume"><i class="fa-solid fa-file-lines"></i></a>
+                            <a href="https://github.com/shubhpatil28" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="mailto:shubhampatil282487@gmail.com" aria-label="Send Email" title="Send Email"><i class="fa-solid fa-paper-plane"></i></a>
+                            <a href="resume.txt" download="Shubham-Patil-Resume.txt" aria-label="Download Resume" title="Resume"><i class="fa-solid fa-file-arrow-down"></i></a>
                         </div>
                     </div>
 
@@ -543,10 +652,46 @@
         </section>
     </main>
 
-    <footer>
-        <div class="footer-line"></div>
-        <p>© 2026 Shubham Patil. All Rights Reserved.</p>
-        <a href="#home" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#home" class="logo" aria-label="Home">SP<span>.</span></a>
+                    <p class="footer-tagline">Shubham Patil — Full Stack Developer &amp; BCA Student. Engineering performant web platforms, modern SaaS architectures, and autonomous AI systems.</p>
+                    <div class="footer-status">
+                        <span class="status-dot"></span>
+                        <span>Available for engineering opportunities &amp; projects</span>
+                    </div>
+                </div>
+
+                <div class="footer-nav">
+                    <span class="footer-heading">Navigation</span>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#timeline">Timeline</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-connect">
+                    <span class="footer-heading">Connect</span>
+                    <ul class="footer-socials">
+                        <li><a href="https://github.com/shubhpatil28" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a></li>
+                        <li><a href="mailto:shubhampatil282487@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a></li>
+                        <li><a href="resume.txt" download="Shubham-Patil-Resume.txt"><i class="fa-solid fa-file-lines"></i> Resume</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Shubham Patil. All rights reserved. Crafted with clean architecture &amp; passion.</p>
+                <a href="#home" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+            </div>
+        </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

@@ -7,6 +7,20 @@ const prefersReducedMotion = reduceMotionQuery.matches;
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 const loadingScreen = document.querySelector('.loading-screen');
+
+// Immediate absolute safety fallback: guaranteed to dismiss loader even if external CDNs, fonts, or scripts hang
+const loaderFallbackTimer = setTimeout(() => {
+  hideLoadingScreen();
+}, prefersReducedMotion ? 0 : 2500);
+
+function hideLoadingScreen() {
+  if (!loadingScreen) return;
+  if (loadingScreen.classList.contains('hidden')) return;
+  try {
+    clearTimeout(loaderFallbackTimer);
+  } catch (_) {}
+  loadingScreen.classList.add('hidden');
+}
 const cursor = document.querySelector('.cursor');
 const cursorGlow = document.querySelector('.cursor-glow');
 const navbar = document.querySelector('.navbar');
@@ -54,6 +68,7 @@ if (!isTouchDevice && window.Lenis) {
     touchMultiplier: 1.4,
     syncTouch: false
   });
+  window.__lenis = lenis;
 
   // Lenis drives the native scroll position; GSAP ScrollTrigger reads from it.
   // Wrapped in try/catch so a missing/optional library can never block the
@@ -81,11 +96,94 @@ if (!isTouchDevice && window.Lenis) {
   }
 }
 
-// Navbar / back-to-top react to Lenis's scroll position (single passive listener).
+// Active Navigation State Synchronization
+let isNavClicking = false;
+let navClickTimer = null;
+
+function setActiveNavItem(targetId) {
+  navItems.forEach((navItem) => {
+    const isTarget = navItem.getAttribute('href') === `#${targetId}`;
+    navItem.classList.toggle('active', isTarget);
+    if (isTarget) {
+      navItem.setAttribute('aria-current', 'page');
+    } else {
+      navItem.removeAttribute('aria-current');
+    }
+  });
+}
+
+function updateActiveNav() {
+  if (isNavClicking) return;
+
+  const scrollY = window.scrollY || window.pageYOffset || 0;
+  const viewportHeight = window.innerHeight;
+  const docHeight = document.documentElement.scrollHeight;
+  const navbarHeight = navbar ? navbar.offsetHeight : 74;
+
+  // 1. Extreme Top: Home is always active
+  if (scrollY < 80) {
+    setActiveNavItem('home');
+    return;
+  }
+
+  // 2. Extreme Bottom: Contact is active when scrolled to bottom of document
+  if (scrollY + viewportHeight >= docHeight - 60) {
+    setActiveNavItem('contact');
+    return;
+  }
+
+  // 3. Focal gaze line in viewport coordinates:
+  // Positioned just below the fixed navbar
+  const gazeY = navbarHeight + 90;
+
+  let activeId = null;
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const sec = sections[i];
+    const rect = sec.getBoundingClientRect();
+    if (rect.top <= gazeY && rect.bottom > navbarHeight) {
+      activeId = sec.id;
+      break;
+    }
+  }
+
+  if (activeId) {
+    setActiveNavItem(activeId);
+  }
+}
+
+// Cancel navigation click lock immediately if user manually interacts with scroll
+['wheel', 'touchmove', 'keydown'].forEach((evt) => {
+  window.addEventListener(evt, () => {
+    if (isNavClicking) {
+      isNavClicking = false;
+      clearTimeout(navClickTimer);
+      updateActiveNav();
+    }
+  }, { passive: true });
+});
+
+// Navbar / back-to-top / active nav scroll listener
+let scrollTick = false;
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('shrink', window.scrollY > 24);
   backToTop.classList.toggle('visible', window.scrollY > 700);
+
+  if (!scrollTick) {
+    requestAnimationFrame(() => {
+      updateActiveNav();
+      scrollTick = false;
+    });
+    scrollTick = true;
+  }
 }, { passive: true });
+
+if (lenis) {
+  lenis.on('scroll', () => {
+    updateActiveNav();
+  });
+}
+
+window.addEventListener('resize', updateActiveNav, { passive: true });
 
 hamburger.addEventListener('click', () => {
   const isOpen = hamburger.classList.toggle('active');
@@ -126,15 +224,8 @@ window.addEventListener('resize', () => {
   }
 });
 
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      navItems.forEach((navItem) => navItem.classList.toggle('active', navItem.getAttribute('href') === `#${entry.target.id}`));
-    }
-  });
-}, { threshold: 0.45 });
-
-sections.forEach((section) => sectionObserver.observe(section));
+// Initial active nav check
+updateActiveNav();
 
 magneticButtons.forEach((button) => {
   button.addEventListener('mousemove', (event) => {
@@ -173,23 +264,30 @@ if (!prefersReducedMotion && window.VanillaTilt) {
   });
 }
 
-if (window.Typed && document.querySelector('.typing-text')) {
-  new Typed('.typing-text', {
-    strings: ['Full Stack Developer', 'Next.js & React Engineer', 'AI Automation Builder', 'BCA Student & Problem Solver'],
-    typeSpeed: 65,
-    backSpeed: 40,
-    backDelay: 1200,
-    loop: true
-  });
+if (!prefersReducedMotion && window.Typed && document.querySelector('.typing-text')) {
+  try {
+    new Typed('.typing-text', {
+      strings: ['Full Stack Developer', 'Next.js & React Engineer', 'AI Automation Builder', 'BCA Student & Problem Solver'],
+      typeSpeed: 60,
+      backSpeed: 35,
+      startDelay: 1200,
+      backDelay: 1800,
+      smartBackspace: true,
+      loop: true
+    });
+  } catch (typedErr) {
+    console.warn('Typed.js initialization failed (non-fatal):', typedErr);
+  }
 }
 
-if (window.gsap && window.ScrollTrigger) {
+if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
   try {
-    gsap.from('.hero-title', { y: 50, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.2 });
-    gsap.from('.hero-subtitle', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.35 });
-    gsap.from('.hero-description', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.5 });
-    gsap.from('.hero-actions .btn', { y: 20, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out', delay: 0.75 });
-    gsap.from('.profile-card', { scale: 0.94, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.5 });
+    gsap.from('.hero-title', { y: 35, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.1 });
+    gsap.from('.hero-subtitle', { y: 20, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.25 });
+    gsap.from('.hero-description', { y: 20, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.35 });
+    gsap.from('.hero-actions .btn', { y: 15, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power3.out', delay: 0.5 });
+    gsap.from('.hero-stats', { y: 15, opacity: 0, duration: 0.6, ease: 'power3.out', delay: 0.65 });
+    gsap.from('.profile-card', { scale: 0.94, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.3 });
 
     gsap.utils.toArray('.section-title, .section-subtitle, .glass-card, .skill-card, .service-card, .project-card, .timeline-item').forEach((el) => {
       gsap.fromTo(el, { y: 28, opacity: 0 }, {
@@ -355,7 +453,16 @@ if (contactForm) {
         contactForm.reset();
         clearErrors();
       } else {
-        const errorMsg = data.error || 'Failed to send message. Please try again or email directly.';
+        let errorMsg = data.error;
+        if (!errorMsg) {
+          if (response.status === 404) {
+            errorMsg = 'Contact API endpoint not found (404). Serverless API is unavailable on this environment.';
+          } else if (response.status >= 500) {
+            errorMsg = `Server error (${response.status}${response.statusText ? ' ' + response.statusText : ''}). Please email directly at shubhampatil282487@gmail.com.`;
+          } else {
+            errorMsg = `Request failed (${response.status}${response.statusText ? ' ' + response.statusText : ''}). Please email directly at shubhampatil282487@gmail.com.`;
+          }
+        }
         if (formStatus) {
           formStatus.textContent = errorMsg;
           formStatus.className = 'form-status error';
@@ -394,14 +501,28 @@ if (isTouchDevice) {
   document.documentElement.style.scrollBehavior = 'smooth';
 }
 
-document.querySelectorAll('.nav-links a').forEach((link) => {
+// Smooth scroll for all internal anchor links (nav links, hero buttons, footer links)
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener('click', (event) => {
     const href = link.getAttribute('href') || '';
-    if (!href.startsWith('#')) return;
-    event.preventDefault();
+    if (href === '#' || !href.startsWith('#')) return;
     const id = href.slice(1);
     const target = document.getElementById(id);
     if (!target) return;
+    event.preventDefault();
+
+    // If target is one of the main sections, immediately synchronize active nav state
+    const isNavSection = Array.from(sections).some((sec) => sec.id === id);
+    if (isNavSection) {
+      setActiveNavItem(id);
+      isNavClicking = true;
+      clearTimeout(navClickTimer);
+      navClickTimer = setTimeout(() => {
+        isNavClicking = false;
+        updateActiveNav();
+      }, 1000);
+    }
+
     if (lenis) {
       lenis.scrollTo(target, { offset: -88, immediate: prefersReducedMotion });
     } else {
@@ -410,12 +531,46 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   });
 });
 
-// Hides the loading screen. Guaranteed to run even if every optional
-// animation library fails to load — a hard fallback timer backs it up.
-function hideLoadingScreen() {
-  if (!loadingScreen) return;
-  if (loadingScreen.classList.contains('hidden')) return;
-  loadingScreen.classList.add('hidden');
+// Dismiss skill card tooltip on mobile when tapping outside
+document.addEventListener('touchstart', (event) => {
+  const activeEl = document.activeElement;
+  if (activeEl && activeEl.classList && activeEl.classList.contains('skill-card')) {
+    if (!activeEl.contains(event.target)) {
+      activeEl.blur();
+    }
+  }
+}, { passive: true });
+
+// Email copy button in contact info card
+const copyEmailBtn = document.getElementById('copy-email-btn');
+if (copyEmailBtn) {
+  copyEmailBtn.addEventListener('click', async () => {
+    const emailToCopy = copyEmailBtn.getAttribute('data-email') || 'shubhampatil282487@gmail.com';
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(emailToCopy);
+      } else {
+        const tempTextarea = document.createElement('textarea');
+        tempTextarea.value = emailToCopy;
+        tempTextarea.style.position = 'fixed';
+        tempTextarea.style.left = '-9999px';
+        document.body.appendChild(tempTextarea);
+        tempTextarea.focus();
+        tempTextarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextarea);
+      }
+      const originalHTML = copyEmailBtn.innerHTML;
+      copyEmailBtn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Copied!';
+      copyEmailBtn.classList.add('copied');
+      setTimeout(() => {
+        copyEmailBtn.innerHTML = originalHTML;
+        copyEmailBtn.classList.remove('copied');
+      }, 2000);
+    } catch (err) {
+      console.warn('Clipboard copy failed:', err);
+    }
+  });
 }
 
 function safeRefresh() {
@@ -428,14 +583,18 @@ function safeRefresh() {
   }
 }
 
-window.addEventListener('load', () => {
-  // Refresh ScrollTrigger after layout/images settle so triggers are accurate.
-  requestAnimationFrame(safeRefresh);
-  setTimeout(safeRefresh, 600);
-  setTimeout(safeRefresh, 2000);
+if (prefersReducedMotion) {
+  hideLoadingScreen();
+} else if (document.readyState === 'complete') {
+  hideLoadingScreen();
+} else {
+  window.addEventListener('load', () => {
+    requestAnimationFrame(safeRefresh);
+    setTimeout(safeRefresh, 300);
+    setTimeout(hideLoadingScreen, 200);
+  });
 
-  setTimeout(hideLoadingScreen, 1300);
-
-  // Hard fallback: if anything above threw, the screen still disappears.
-  setTimeout(hideLoadingScreen, 4000);
-});
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(hideLoadingScreen, 1200);
+  });
+}

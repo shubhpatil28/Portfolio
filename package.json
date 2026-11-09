@@ -5,10 +5,14 @@
   "description": "Portfolio of Shubham Patil — Full Stack Developer & BCA Student",
   "type": "module",
   "scripts": {
+    "dev": "node dev-server.mjs",
     "start": "npx serve ."
   },
   "dependencies": {
     "firebase-admin": "^14.5.0",
     "resend": "^4.1.2"
+  },
+  "devDependencies": {
+    "vercel": "^65.12.1"
   }
 }
