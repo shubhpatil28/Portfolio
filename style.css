@@ -1837,8 +1837,8 @@ body.cursor-active .cursor-glow {
     }
 
     .hero-actions .secondary {
-        grid-column: 1 / -1;
-        grid-row: 2;
+        grid-column: auto;
+        grid-row: auto;
     }
 
     .hero-stats {

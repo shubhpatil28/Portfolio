@@ -1,0 +1,639 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<<
+  /Type /Page
+  /Parent 2 0 R
+  /MediaBox [0 0 595.28 841.89]
+  /Contents 4 0 R
+  /Resources <<
+    /Font <<
+      /F1 5 0 R
+      /F2 6 0 R
+      /F3 7 0 R
+    >>
+  >>
+  /Annots [8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R]
+>>
+endobj
+4 0 obj
+<< /Length 7620 >>
+stream
+BT
+/F2 24 Tf
+0.050 0.090 0.180 rg
+1 0 0 1 46.00 773.89 Tm
+(SHUBHAM PATIL) Tj
+ET
+BT
+/F2 11.5 Tf
+0.110 0.350 0.820 rg
+1 0 0 1 46.00 755.89 Tm
+(Full Stack Developer & BCA Student) Tj
+ET
+BT
+/F1 9.5 Tf
+0.280 0.340 0.400 rg
+1 0 0 1 46.00 739.39 Tm
+(Maharashtra, India) Tj
+ET
+BT
+/F1 9.5 Tf
+0.550 0.600 0.680 rg
+1 0 0 1 128.65 739.39 Tm
+(  |  ) Tj
+ET
+BT
+/F1 9.5 Tf
+0.100 0.350 0.820 rg
+1 0 0 1 141.95 739.39 Tm
+(shubhampatil282487@gmail.com) Tj
+ET
+BT
+/F1 9.5 Tf
+0.550 0.600 0.680 rg
+1 0 0 1 280.27 739.39 Tm
+(  |  ) Tj
+ET
+BT
+/F1 9.5 Tf
+0.100 0.350 0.820 rg
+1 0 0 1 293.57 739.39 Tm
+(github.com/shubhpatil28) Tj
+ET
+BT
+/F1 9.5 Tf
+0.550 0.600 0.680 rg
+1 0 0 1 400.92 739.39 Tm
+(  |  ) Tj
+ET
+BT
+/F1 9.5 Tf
+0.100 0.350 0.820 rg
+1 0 0 1 414.22 739.39 Tm
+(shubhfolioo.vercel.app) Tj
+ET
+0.110 0.350 0.820 rg
+46.00 726.39 45.00 2.50 re f
+0.820 0.860 0.920 RG
+0.80 w
+96.00 727.64 m 549.28 727.64 l S
+BT
+/F2 11 Tf
+0.050 0.100 0.220 rg
+1 0 0 1 46.00 694.89 Tm
+(PROFESSIONAL SUMMARY) Tj
+ET
+0.820 0.860 0.920 RG
+0.85 w
+207.69 698.89 m 549.28 698.89 l S
+BT
+/F1 9.6 Tf
+0.180 0.240 0.320 rg
+1 0 0 1 46.00 679.39 Tm
+(Dedicated Full Stack Developer and Computer Application \(BCA\) student experienced in building modern web) Tj
+ET
+BT
+/F1 9.6 Tf
+0.180 0.240 0.320 rg
+1 0 0 1 46.00 664.89 Tm
+(applications, multi-tenant SaaS platforms, institutional portals, and AI automation tooling. Skilled in) Tj
+ET
+BT
+/F1 9.6 Tf
+0.180 0.240 0.320 rg
+1 0 0 1 46.00 650.39 Tm
+(TypeScript, React, Next.js, Python, Firebase, and Tailwind CSS with a strong focus on clean architecture,) Tj
+ET
+BT
+/F1 9.6 Tf
+0.180 0.240 0.320 rg
+1 0 0 1 46.00 635.89 Tm
+(responsive design, and performance.) Tj
+ET
+BT
+/F2 11 Tf
+0.050 0.100 0.220 rg
+1 0 0 1 46.00 607.89 Tm
+(TECHNICAL SKILLS) Tj
+ET
+0.820 0.860 0.920 RG
+0.85 w
+168.37 611.89 m 549.28 611.89 l S
+BT
+/F2 9.5 Tf
+0.080 0.150 0.260 rg
+1 0 0 1 50.00 592.39 Tm
+(Frontend: ) Tj
+ET
+BT
+/F1 9.5 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 99.76 592.39 Tm
+(HTML5, CSS3, JavaScript \(ES6+\), TypeScript, React, Next.js, Tailwind CSS) Tj
+ET
+BT
+/F2 9.5 Tf
+0.080 0.150 0.260 rg
+1 0 0 1 50.00 577.89 Tm
+(Backend & APIs: ) Tj
+ET
+BT
+/F1 9.5 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 127.05 577.89 Tm
+(Python, FastAPI, Flask, Node.js, Express.js, C++) Tj
+ET
+BT
+/F2 9.5 Tf
+0.080 0.150 0.260 rg
+1 0 0 1 50.00 563.39 Tm
+(Database & Cloud: ) Tj
+ET
+BT
+/F1 9.5 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 136.39 563.39 Tm
+(Firebase Authentication, Firestore, SQL, Vercel, Render) Tj
+ET
+BT
+/F2 9.5 Tf
+0.080 0.150 0.260 rg
+1 0 0 1 50.00 548.89 Tm
+(Tools & Workflows: ) Tj
+ET
+BT
+/F1 9.5 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 144.08 548.89 Tm
+(Git, GitHub, RESTful APIs, AI-Assisted Development) Tj
+ET
+BT
+/F2 11 Tf
+0.050 0.100 0.220 rg
+1 0 0 1 46.00 524.89 Tm
+(FEATURED PROJECTS) Tj
+ET
+0.820 0.860 0.920 RG
+0.85 w
+184.88 528.89 m 549.28 528.89 l S
+BT
+/F2 10.5 Tf
+0.050 0.100 0.240 rg
+1 0 0 1 50.00 508.39 Tm
+(EduCatalog SaaS) Tj
+ET
+BT
+/F3 9 Tf
+0.380 0.440 0.520 rg
+1 0 0 1 138.91 508.39 Tm
+(  |  Next.js, TypeScript, Tailwind CSS, Firebase) Tj
+ET
+BT
+/F1 9 Tf
+0.100 0.360 0.820 rg
+1 0 0 1 521.02 508.39 Tm
+(GitHub) Tj
+ET
+BT
+/F1 9 Tf
+0.600 0.650 0.700 rg
+1 0 0 1 506.26 508.39 Tm
+(  *  ) Tj
+ET
+BT
+/F1 9 Tf
+0.100 0.360 0.820 rg
+1 0 0 1 463.42 508.39 Tm
+(Live Demo) Tj
+ET
+BT
+/F2 9.8 Tf
+0.250 0.400 0.700 rg
+1 0 0 1 58.00 493.39 Tm
+(-) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 493.39 Tm
+(Architected multi-tenant school management platform featuring role-based access control and tenant data) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 479.39 Tm
+(isolation.) Tj
+ET
+BT
+/F2 9.8 Tf
+0.250 0.400 0.700 rg
+1 0 0 1 58.00 465.39 Tm
+(-) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 465.39 Tm
+(Engineered real-time student cataloging, attendance logging, and staff management workflows.) Tj
+ET
+BT
+/F2 9.8 Tf
+0.250 0.400 0.700 rg
+1 0 0 1 58.00 451.39 Tm
+(-) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 451.39 Tm
+(Implemented institutional analytics reporting and subscription-ready administrative controls.) Tj
+ET
+BT
+/F2 10.5 Tf
+0.050 0.100 0.240 rg
+1 0 0 1 50.00 430.39 Tm
+(AIM 2.0 College Website) Tj
+ET
+BT
+/F3 9 Tf
+0.380 0.440 0.520 rg
+1 0 0 1 173.61 430.39 Tm
+(  |  Next.js, TypeScript, Tailwind CSS, Firebase) Tj
+ET
+BT
+/F1 9 Tf
+0.100 0.360 0.820 rg
+1 0 0 1 521.02 430.39 Tm
+(GitHub) Tj
+ET
+BT
+/F1 9 Tf
+0.600 0.650 0.700 rg
+1 0 0 1 506.26 430.39 Tm
+(  *  ) Tj
+ET
+BT
+/F1 9 Tf
+0.100 0.360 0.820 rg
+1 0 0 1 463.42 430.39 Tm
+(Live Demo) Tj
+ET
+BT
+/F2 9.8 Tf
+0.250 0.400 0.700 rg
+1 0 0 1 58.00 415.39 Tm
+(-) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 415.39 Tm
+(Built official institutional web portal for Smt. S. M. Agrawal Institute of Management.) Tj
+ET
+BT
+/F2 9.8 Tf
+0.250 0.400 0.700 rg
+1 0 0 1 58.00 401.39 Tm
+(-) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 401.39 Tm
+(Delivered academic program directories \(BCA, BBA, MMS\), syllabus downloads, and faculty directory.) Tj
+ET
+BT
+/F2 9.8 Tf
+0.250 0.400 0.700 rg
+1 0 0 1 58.00 387.39 Tm
+(-) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 387.39 Tm
+(Created admissions inquiry pipeline and real-time administrative notification feed.) Tj
+ET
+BT
+/F2 10.5 Tf
+0.050 0.100 0.240 rg
+1 0 0 1 50.00 366.39 Tm
+(LinkedIn AI Autopilot) Tj
+ET
+BT
+/F3 9 Tf
+0.380 0.440 0.520 rg
+1 0 0 1 159.20 366.39 Tm
+(  |  Next.js, TypeScript, Tailwind CSS, AI Workflows) Tj
+ET
+BT
+/F1 9 Tf
+0.100 0.360 0.820 rg
+1 0 0 1 521.02 366.39 Tm
+(GitHub) Tj
+ET
+BT
+/F1 9 Tf
+0.600 0.650 0.700 rg
+1 0 0 1 506.26 366.39 Tm
+(  *  ) Tj
+ET
+BT
+/F1 9 Tf
+0.100 0.360 0.820 rg
+1 0 0 1 463.42 366.39 Tm
+(Live Demo) Tj
+ET
+BT
+/F2 9.8 Tf
+0.250 0.400 0.700 rg
+1 0 0 1 58.00 351.39 Tm
+(-) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 351.39 Tm
+(Engineered autonomous content generation and scheduling engine tailored for professional LinkedIn) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 337.39 Tm
+(engagement.) Tj
+ET
+BT
+/F2 9.8 Tf
+0.250 0.400 0.700 rg
+1 0 0 1 58.00 323.39 Tm
+(-) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 323.39 Tm
+(Developed prompt engineering workflows generating high-quality targeted post variations.) Tj
+ET
+BT
+/F2 9.8 Tf
+0.250 0.400 0.700 rg
+1 0 0 1 58.00 309.39 Tm
+(-) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 309.39 Tm
+(Built responsive modern interface featuring draft review, scheduling pipeline, and post history.) Tj
+ET
+BT
+/F2 10.5 Tf
+0.050 0.100 0.240 rg
+1 0 0 1 50.00 288.39 Tm
+(EduTrack Attendance System) Tj
+ET
+BT
+/F3 9 Tf
+0.380 0.440 0.520 rg
+1 0 0 1 207.17 288.39 Tm
+(  |  HTML5, CSS3, JavaScript, Firebase Firestore) Tj
+ET
+BT
+/F1 9 Tf
+0.100 0.360 0.820 rg
+1 0 0 1 506.44 288.39 Tm
+(Live Demo) Tj
+ET
+BT
+/F2 9.8 Tf
+0.250 0.400 0.700 rg
+1 0 0 1 58.00 273.39 Tm
+(-) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 273.39 Tm
+(Developed student attendance tracking web application with persistent cloud storage.) Tj
+ET
+BT
+/F2 9.8 Tf
+0.250 0.400 0.700 rg
+1 0 0 1 58.00 259.39 Tm
+(-) Tj
+ET
+BT
+/F1 9.3 Tf
+0.200 0.260 0.340 rg
+1 0 0 1 70.00 259.39 Tm
+(Implemented real-time classroom check-in logs and automated attendance calculation.) Tj
+ET
+BT
+/F2 11 Tf
+0.050 0.100 0.220 rg
+1 0 0 1 46.00 229.89 Tm
+(EDUCATION) Tj
+ET
+0.820 0.860 0.920 RG
+0.85 w
+123.10 233.89 m 549.28 233.89 l S
+BT
+/F2 10.5 Tf
+0.050 0.100 0.240 rg
+1 0 0 1 50.00 213.39 Tm
+(Bachelor of Computer Application \(BCA\)) Tj
+ET
+BT
+/F2 9.5 Tf
+0.220 0.320 0.500 rg
+1 0 0 1 423.08 213.39 Tm
+(Expected Graduation: 2028) Tj
+ET
+BT
+/F1 9.3 Tf
+0.220 0.280 0.360 rg
+1 0 0 1 50.00 199.39 Tm
+(Focus: Software Engineering, Object-Oriented Programming \(C++\), Algorithms, Database Management \(SQL\),) Tj
+ET
+BT
+/F1 9.3 Tf
+0.220 0.280 0.360 rg
+1 0 0 1 50.00 185.39 Tm
+(Full-Stack Architecture.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+8 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [141.95 736.39 280.27 750.89]
+  /Border [0 0 0]
+  /A <<
+    /Type /Action
+    /S /URI
+    /URI (mailto:shubhampatil282487@gmail.com)
+  >>
+>>
+endobj
+9 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [293.57 736.39 400.92 750.89]
+  /Border [0 0 0]
+  /A <<
+    /Type /Action
+    /S /URI
+    /URI (https://github.com/shubhpatil28)
+  >>
+>>
+endobj
+10 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [414.22 736.39 511.50 750.89]
+  /Border [0 0 0]
+  /A <<
+    /Type /Action
+    /S /URI
+    /URI (https://shubhfolioo.vercel.app/)
+  >>
+>>
+endobj
+11 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [521.02 505.39 549.28 519.39]
+  /Border [0 0 0]
+  /A <<
+    /Type /Action
+    /S /URI
+    /URI (https://github.com/shubhpatil28/educatalog-saas)
+  >>
+>>
+endobj
+12 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [463.42 505.39 506.26 519.39]
+  /Border [0 0 0]
+  /A <<
+    /Type /Action
+    /S /URI
+    /URI (https://educatalog-saas.vercel.app/)
+  >>
+>>
+endobj
+13 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [521.02 427.39 549.28 441.39]
+  /Border [0 0 0]
+  /A <<
+    /Type /Action
+    /S /URI
+    /URI (https://github.com/shubhpatil28/collageWebsite)
+  >>
+>>
+endobj
+14 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [463.42 427.39 506.26 441.39]
+  /Border [0 0 0]
+  /A <<
+    /Type /Action
+    /S /URI
+    /URI (https://collage-website-rho.vercel.app/)
+  >>
+>>
+endobj
+15 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [521.02 363.39 549.28 377.39]
+  /Border [0 0 0]
+  /A <<
+    /Type /Action
+    /S /URI
+    /URI (https://github.com/shubhpatil28/LinkedIn-AI-Autopilot)
+  >>
+>>
+endobj
+16 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [463.42 363.39 506.26 377.39]
+  /Border [0 0 0]
+  /A <<
+    /Type /Action
+    /S /URI
+    /URI (https://linked-in-ai-autopilot.vercel.app/)
+  >>
+>>
+endobj
+17 0 obj
+<<
+  /Type /Annot
+  /Subtype /Link
+  /Rect [506.44 285.39 549.28 299.39]
+  /Border [0 0 0]
+  /A <<
+    /Type /Action
+    /S /URI
+    /URI (https://edutrack-attendance-d44f3.web.app/)
+  >>
+>>
+endobj
+xref
+0 18
+0000000000 65535 f
+0000000019 00000 n
+0000000068 00000 n
+0000000125 00000 n
+0000000395 00000 n
+0000008067 00000 n
+0000008164 00000 n
+0000008266 00000 n
+0000008371 00000 n
+0000008570 00000 n
+0000008765 00000 n
+0000008961 00000 n
+0000009173 00000 n
+0000009373 00000 n
+0000009584 00000 n
+0000009788 00000 n
+0000010006 00000 n
+0000010213 00000 n
+trailer
+<<
+  /Size 18
+  /Root 1 0 R
+>>
+startxref
+10420
+%%EOF
