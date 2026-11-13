@@ -270,7 +270,7 @@ if (!prefersReducedMotion && window.Typed && document.querySelector('.typing-tex
       strings: ['Full Stack Developer', 'Next.js & React Engineer', 'AI Automation Builder', 'BCA Student & Problem Solver'],
       typeSpeed: 60,
       backSpeed: 35,
-      startDelay: 1200,
+      startDelay: 500,
       backDelay: 1800,
       smartBackspace: true,
       loop: true
@@ -595,6 +595,6 @@ if (prefersReducedMotion) {
   });
 
   document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(hideLoadingScreen, 1200);
+    setTimeout(hideLoadingScreen, 150);
   });
 }
